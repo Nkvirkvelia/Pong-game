@@ -21,7 +21,7 @@
 ### Task 4: Implement server[ ]side game logic and physics
 
 [x] 4.1 – Define shared `GameState`, `Player`, and `Ball` interfaces in `shared/types.ts`
-[ ] 4.2 – Create `GameRoom` class to manage game loop and player state
+[x] 4.2 – Create `GameRoom` class to manage game loop and player state
 [ ] 4.3 – Implement ball movement and timer[ ]based game loop (60 FPS)
 [ ] 4.4 – Add collision detection: ball with walls and paddles
 [ ] 4.5 – Implement scoring and reset logic after point
