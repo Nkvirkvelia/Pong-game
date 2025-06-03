@@ -14,7 +14,7 @@
 
 ### Task 3: Create game room and connection logic (Socket.IO)
 
-[ ] 3.1 – Implement `joinRoom` event from client and match 2 players
+[x] 3.1 – Implement `joinRoom` event from client and match 2 players
 [ ] 3.2 – Emit `startGame` event when both players are connected
 [ ] 3.3 – Handle `playerDisconnect` and room cleanup
 
