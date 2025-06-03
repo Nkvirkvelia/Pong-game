@@ -3,12 +3,12 @@ const cors = require("cors");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 
-// ✅ Import type declarations from Express and Socket.IO
+// Import type declarations from Express and Socket.IO
 /** @type {import('express').Request} */
 const app = express();
 app.use(cors());
 
-// ✅ Add explicit types for route handler
+// Add explicit types for route handler
 /** @type {import('express').RequestHandler} */
 app.get(
   "/ping",
@@ -19,7 +19,7 @@ app.get(
 
 const httpServer = createServer(app);
 
-// ✅ Add Socket.IO type
+// Add Socket.IO type
 /** @type {import('socket.io').Server} */
 const io = new Server(httpServer, {
   cors: {
@@ -28,7 +28,7 @@ const io = new Server(httpServer, {
   },
 });
 
-// ✅ Explicitly type the socket
+// Explicitly type the socket
 io.on("connection", (socket: import("socket.io").Socket) => {
   console.log(`Client connected: ${socket.id}`);
 
