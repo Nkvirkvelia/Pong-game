@@ -1,7 +1,7 @@
 import { Server, Socket } from "socket.io";
 import { GameState } from "../../../shared/types";
 
-export class GameRoom {
+class GameRoom {
   private roomId: string;
   private players: string[]; // socket IDs
   private io: Server;
@@ -64,3 +64,5 @@ export class GameRoom {
     return this.gameState;
   }
 }
+
+module.exports = { GameRoom };

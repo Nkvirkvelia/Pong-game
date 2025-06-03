@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
+const { GameRoom } = require("./game/GameRoom");
 
 const app = express();
 app.use(cors());
@@ -24,6 +25,7 @@ const io: import("socket.io").Server = new Server(httpServer, {
 
 // Room manager (store room → socket IDs)
 const rooms: Record<string, string[]> = {};
+const activeGames: Record<string, InstanceType<typeof GameRoom>> = {};
 
 io.on("connection", (socket: import("socket.io").Socket) => {
   console.log(`Client connected: ${socket.id}`);
@@ -53,9 +55,13 @@ io.on("connection", (socket: import("socket.io").Socket) => {
     // Let the client know which room it joined
     socket.emit("roomJoined", { roomId: joinedRoom });
 
-    // If two players are now in the room, emit startGame
+    // If two players are now in the room, emit startGame and run game loop
     if (rooms[joinedRoom].length === 2) {
       io.to(joinedRoom).emit("startGame", { roomId: joinedRoom });
+
+      const gameRoom = new GameRoom(joinedRoom, rooms[joinedRoom], io);
+      gameRoom.start();
+      activeGames[joinedRoom] = gameRoom;
     }
   });
 
@@ -69,7 +75,14 @@ io.on("connection", (socket: import("socket.io").Socket) => {
 
       // If room is empty, delete it
       if (rooms[roomId].length === 0) {
+        // Stop game loop if it exists
+        if (activeGames[roomId]) {
+          activeGames[roomId].stop();
+          delete activeGames[roomId];
+        }
+
         delete rooms[roomId];
+        console.log(`Room ${roomId} deleted`);
       }
     }
   });

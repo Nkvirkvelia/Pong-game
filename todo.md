@@ -22,7 +22,7 @@
 
 [x] 4.1 – Define shared `GameState`, `Player`, and `Ball` interfaces in `shared/types.ts`
 [x] 4.2 – Create `GameRoom` class to manage game loop and player state
-[ ] 4.3 – Implement ball movement and timer[ ]based game loop (60 FPS)
+[x] 4.3 – Implement ball movement and timer[ ]based game loop (60 FPS)
 [ ] 4.4 – Add collision detection: ball with walls and paddles
 [ ] 4.5 – Implement scoring and reset logic after point
 [ ] 4.6 – Emit `gameState` update to both clients continuously
