@@ -31,9 +31,9 @@
 
 [x] 5.1 – Create game canvas or layout using HTML5 + CSS
 [x] 5.2 – Render paddles, ball, and score from `gameState`
-[ ] 5.3 – Capture player input with keyboard (W/S or Up/Down)
-[ ] 5.4 – Emit `playerMove` events to server on key press
-[ ] 5.5 – Animate paddle/ball positions based on incoming state
+[x] 5.3 – Capture player input with keyboard (W/S or Up/Down)
+[x] 5.4 – Emit `playerMove` events to server on key press
+[x] 5.5 – Animate paddle/ball positions based on incoming state
 
 ### Task 6: Integrate and finalize full[ ]stack game
 

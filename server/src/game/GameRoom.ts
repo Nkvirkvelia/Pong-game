@@ -112,9 +112,24 @@ class GameRoom {
     this.io.to(this.roomId).emit("gameState", this.gameState);
   }
 
+  handlePlayerMove(playerId: string, direction: "up" | "down") {
+    const player = this.gameState.players[playerId];
+    if (!player) return;
+
+    const speed = 5;
+    const paddleHeight = 80;
+    const canvasHeight = 400;
+
+    if (direction === "up") {
+      player.y = Math.max(0, player.y - speed);
+    } else if (direction === "down") {
+      player.y = Math.min(canvasHeight - paddleHeight, player.y + speed);
+    }
+  }
+
   getState(): GameState {
     return this.gameState;
   }
 }
 
-module.exports = { GameRoom };
+export { GameRoom };

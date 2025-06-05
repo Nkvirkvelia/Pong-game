@@ -45,7 +45,25 @@ function App() {
     };
   }, []);
 
-  // Draw game frame on canvas
+  // Handle keyboard input
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!gameStarted) return;
+
+      if (e.key === "w" || e.key === "ArrowUp") {
+        socket.emit("playerMove", "up");
+      } else if (e.key === "s" || e.key === "ArrowDown") {
+        socket.emit("playerMove", "down");
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [gameStarted]);
+
+  // Draw game frame
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
@@ -54,7 +72,6 @@ function App() {
     const { ball, players, score } = gameState;
     const playerIds = Object.keys(players);
 
-    // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Draw ball
@@ -68,7 +85,7 @@ function App() {
       const x = index === 0 ? 20 : canvas.width - 30;
       const y = players[id].y;
       ctx.fillStyle = "white";
-      ctx.fillRect(x, y, 10, 80); // paddle dimensions
+      ctx.fillRect(x, y, 10, 80);
     });
 
     // Draw score
@@ -96,7 +113,6 @@ function App() {
       <p>Room: {roomId ?? "N/A"}</p>
       {gameStarted && <p>🚀 Game Started!</p>}
 
-      {/* Game canvas */}
       <canvas
         ref={canvasRef}
         width={600}
