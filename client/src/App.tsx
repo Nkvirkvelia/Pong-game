@@ -29,6 +29,10 @@ function App() {
       setGameState(state);
     });
 
+    socket.on("errorMessage", (msg: string) => {
+      alert(msg);
+    });
+
     socket.on("disconnect", () => {
       setIsConnected(false);
       setGameStarted(false);
@@ -41,6 +45,7 @@ function App() {
       socket.off("roomJoined");
       socket.off("startGame");
       socket.off("gameState");
+      socket.off("errorMessage");
       socket.off("disconnect");
     };
   }, []);

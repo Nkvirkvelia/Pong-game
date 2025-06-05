@@ -42,6 +42,10 @@ io.on("connection", (socket: Socket) => {
     if (!joinedRoom) {
       joinedRoom = `room-${socket.id}`;
       rooms[joinedRoom] = [socket.id];
+    } else if (rooms[joinedRoom].length > 2) {
+      // Just in case — shouldn't happen
+      socket.emit("errorMessage", "Room is full");
+      return;
     }
 
     socket.join(joinedRoom);
