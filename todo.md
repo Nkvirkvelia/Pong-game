@@ -16,7 +16,7 @@
 
 [x] 3.1 – Implement `joinRoom` event from client and match 2 players
 [x] 3.2 – Emit `startGame` event when both players are connected
-[ ] 3.3 – Handle `playerDisconnect` and room cleanup
+[x] 3.3 – Handle `playerDisconnect` and room cleanup
 
 ### Task 4: Implement server[ ]side game logic and physics
 
