@@ -29,8 +29,8 @@
 
 ### Task 5: Build real[ ]time UI in React frontend
 
-[ ] 5.1 – Create game canvas or layout using HTML5 + CSS
-[ ] 5.2 – Render paddles, ball, and score from `gameState`
+[x] 5.1 – Create game canvas or layout using HTML5 + CSS
+[x] 5.2 – Render paddles, ball, and score from `gameState`
 [ ] 5.3 – Capture player input with keyboard (W/S or Up/Down)
 [ ] 5.4 – Emit `playerMove` events to server on key press
 [ ] 5.5 – Animate paddle/ball positions based on incoming state
