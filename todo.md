@@ -38,7 +38,7 @@
 ### Task 6: Integrate and finalize full[ ]stack game
 
 [x] 6.1 – Use shared types for both frontend and backend to enforce consistency
-[ ] 6.2 – Connect React components with WebSocket events
+[x] 6.2 – Connect React components with WebSocket events
 [ ] 6.3 – Test full game loop with two local clients
 [ ] 6.4 – Handle edge cases (disconnects, late joins, etc.)
 [ ] 6.5 – Polish UI and controls for smoother gameplay
